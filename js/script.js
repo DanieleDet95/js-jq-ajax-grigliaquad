@@ -5,6 +5,8 @@ $(document).ready(
   // random da 1 a 9. Se è <= 5 il quadrato diventa giallo, se è > di 5 il quadrato
   // diventa verde. Il numero ottenuto appare al centro del quadrato .
 
+  // Generazione di blocchi
+  generaBlocchi();
   // Al click del blocco
   $('.blocco').click(
     function(){
@@ -44,3 +46,13 @@ $(document).ready(
 
   });
 });
+
+function generaBlocchi(){
+  var source = document.getElementById("blocco-template").innerHTML;
+  var template = Handlebars.compile(source);
+  var context = {};
+  var html = template(context);
+  for (var i = 0; i < 36; i++) {
+    $('.container').append(html);
+  }
+}
